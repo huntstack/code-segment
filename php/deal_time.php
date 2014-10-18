@@ -7,7 +7,7 @@
 	*/
 	class Process_Date{
 		
-		public $date;
+		private $date;
 		private $M,$D,$Y;
 
 		/**
@@ -24,18 +24,18 @@
 			}else{
 				throw new Exception("paramter must be timestamp or date string or empty for current time");
 			}
+			$this->set_varibales();
+		}
+
+		public function set_date($date){
+			$this->date = strtotime($date);
+			$this->set_varibales();
+		}
+
+		private function set_varibales(){
 			$this->M = date("m",$this->date);
 			$this->D = date("d",$this->date);
 			$this->Y = date("Y",$this->date);
-		}
-
-
-		public function get_last_day(){
-			return strtotime("yesterday",$this->date);
-		}
-
-		public function get_next_day(){
-			return strtotime("tomorrow",$this->date);
 		}
 
 		/**
@@ -158,4 +158,8 @@
 			return $return;
 		}
 	}
+	$p = new Process_Date();
+	var_dump($p->get_last_days(3));
+	$p->set_date("2014-01-10");
+	var_dump($p->get_last_days(3));
 ?>
