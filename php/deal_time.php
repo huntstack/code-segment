@@ -158,8 +158,4 @@
 			return $return;
 		}
 	}
-	$p = new Process_Date();
-	var_dump($p->get_last_days(3));
-	$p->set_date("2014-01-10");
-	var_dump($p->get_last_days(3));
 ?>
